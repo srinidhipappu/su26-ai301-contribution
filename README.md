@@ -1,15 +1,19 @@
-# Contribution [#]: [Issue Title]
+# Contribution [1]: @nuxt/auth integration for Asgardeo #364
 
-**Contribution Number:** [1 / 2 / 3]  
-**Student:** [Your Name]  
-**Issue:** [GitHub issue link]  
-**Status:** [Phase I / Phase II / Phase III / Phase IV] [In Progress / Complete]
+
+**Contribution Number:** 1
+**Student:** Srinidhi Pappu
+**Issue:** https://github.com/asgardeo/javascript/issues/364 
+
+The issue is essentially looking for an official Asgardeo authentication system for Nuxt.js so developers can easily add Asgardeo login to their applications without manually configuring OAuth/OpenID Connect settings every time. In order to solve this issue, I would need to build a new authentication sysyem that handles login, logout, token management, PKCE security, and user profile retrieval, similar to how Auth0 is already integrated into Nuxt Auth.
+
+**Status:** Phase I Complete
 
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+I chose this issue because it aligns closely with my interests in software engineering, fintech, authentication systems, and web dev. Asgardeo is an identity and access management platform, and working on an official Nuxt.js authentication provider would give me hands-on experience with industry-standard technologies such as OAuth 2.0, OpenID Connect (OIDC), PKCE, and token management. I am also interested in learning how authentication SDKs are designed and integrated into modern web frameworks, and working on this issue for the next 4 weeks would give me an opportunity to contribute a meaningful feature that improves the developer experience for Nuxt users while expanding my knowledge of secure application development and open-source collaboration.
 
 ---
 
