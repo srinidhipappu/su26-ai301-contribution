@@ -21,19 +21,25 @@ I chose this issue because it aligns closely with my interests in software engin
 
 ### Problem Description
 
-[In your own words, what's broken or missing?]
+The authentication system currently does not have an Asgardeo provider. Although Asgardeo supports OpenID Connect (OIDC) and can be integrated using a generic OIDC strategy, developers must manually configure endpoints, PKCE settings, token handling, and logout behavior. This leads to extra setup efforts and inconsistent implementations across different projects.
 
 ### Expected Behavior
 
-[What should happen?]
+The authentication module should include an official Asgardeo provider that developers can navigate with minimal settings (such as clientId and issuer). The provider should automatically handle OIDC discovery, PKCE, token management, user profile retrieval, and logout functionality, similar to existing providers like Auth0.
 
 ### Current Behavior
 
-[What actually happens?]
+Currently, there is no built-in Asgardeo provider available. Developers who want to use Asgardeo must set up a generic OIDC strategy manually, including authentication endpoints, token handling, PKCE configuration, and logout settings, which is much more tedious and can lead to errors while configuring.
+
 
 ### Affected Components
 
 [Which parts of the codebase are involved?]
+
+This issue occurs within two codebases:
+The actual @nuxt/auth provider implementation belongs in the upstream nuxt-community/auth-module repo, likely under src/providers.
+This local Asgardeo JavaScript SDK repo contains the Asgardeo/Nuxt behavior you would use as reference material, especially packages/nuxt, packages/javascript, and packages/node.
+
 
 ---
 
