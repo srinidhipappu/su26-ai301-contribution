@@ -113,14 +113,15 @@ Plan
     9. Add documentation and configuration examples.
     10. Add or update automated tests for the new provider.
 
-    Expected files to modify (subject to repository structure):
+Expected files to modify (subject to repository structure):
     - Provider implementation files
     - Provider registration/configuration files
     - Documentation files
     - Authentication test files
 
 Implement
-    Implementation branch: feature/asgardeo-provider
+    Branch link: https://github.com/srinidhipappu/javascript/tree/nuxt/auth-integration
+    Fork link: https://github.com/srinidhipappu/javascript
     Commits and branch links will be added during development.
 
 Review
@@ -135,7 +136,7 @@ Review
 
 Evaluate
 
-    Verification will include:
+ Verification will include:
         - Functional Verification
         - Configure a sample application using the new Asgardeo provider.
         - Authenticate successfully using an Asgardeo tenant.
@@ -149,8 +150,8 @@ Evaluate
         - Add tests covering user profile mapping.
         - Run the project's existing test suite to ensure no regressions.
 
-    Success Criteria:
-    Developers can integrate Asgardeo using a dedicated provider configuration without manually configuring OIDC endpoints and related authentication settings.
+ Success Criteria:
+    Developers can integrate Asgardeo using a dedicated provider configuration without manually configuring OIDC endpoints and related    authentication settings.
 
 
 ---
