@@ -51,15 +51,16 @@ This local Asgardeo JavaScript SDK repo contains the Asgardeo/Nuxt behavior you 
 
 ### Steps to Reproduce
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+Since this is a feature request:
+Step 1: Create a Nuxt application that uses Nuxt Auth.
+Step 2: Create or configure an Asgardeo application and attempt to integrate it with Nuxt Auth.
+Step 3: Look for a built-in Asgardeo strategy/provider.
+Step 4: Notice that that no Asgardeo provider exists and that a generic OIDC strategy must be configured manually.
+Result: There is no dedicated Asgardeo provider available. Developers must manually configure a generic OIDC strategy, including issuer information, authentication endpoints, PKCE settings, token handling, and logout behavior.
+
 
 ### Reproduction Evidence
-
-- **Commit showing reproduction:** [Link to commit in your fork]
-- **Screenshots/logs:** [If applicable]
-- **My findings:** [What you discovered during reproduction]
+- I discovered that in the process of trying to implement Asgardeo into a new test Nuxt application, the module did not exist and could not be recognized. 
 
 ---
 
@@ -67,30 +68,90 @@ This local Asgardeo JavaScript SDK repo contains the Asgardeo/Nuxt behavior you 
 
 ### Analysis
 
-[Your analysis of the root cause - what's causing the issue?]
+The issue exists because there is currently no dedicated Asgardeo provider implementation available for Nuxt Auth integration. While Asgardeo supports OpenID Connect (OIDC), developers must use a regular OIDC strategy and manually set up authentication endpoints, PKCE settings, token handling, user profile retrieval, and logout behavior.
 
 ### Proposed Solution
 
-[High-level description of your fix approach]
+Implement an official Asgardeo provider that follows the same patterns used by existing authentication providers.
+
+The provider should:
+- Accept minimal configuration such as clientId and issuer
+- Automatically perform OIDC discovery
+- Enable PKCE by default
+- Handle access tokens, ID tokens, and refresh tokens
+- Retrieve user profile information from the UserInfo endpoint
+- Support logout functionality
+- Provide documentation and examples for Nuxt developers
+
+This would eliminate the need for manual OIDC configuration while providing a consistent integration experience.
+
 
 ### Implementation Plan
 
-Using UMPIRE framework (adapted):
+Understand:
+The current authentication ecosystem does not provide a dedicated Asgardeo provider. Developers can authenticate through Asgardeo using generic OIDC support, but they must manually configure several authentication-related settings.
+The expected behavior is to provide an Asgardeo provider that automatically handles common OIDC functionality and requires minimal setup.
 
-**Understand:** [Restate the problem]
+Match:
+I plan to review existing provider implementations that already solve a similar problem. That way, these implementations can be used as templates for the new Asgardeo provider.
+I plan to review sources such as:
+    - Auth0 provider
+    - Other OIDC-based providers
+    - Existing provider registration patterns
+    - Existing authentication documentation structure
+    
 
-**Match:** [What similar patterns/solutions exist in the codebase?]
+Plan
+    1. Investigate the provider architecture and identify how providers are registered.
+    2. Locate existing OIDC-based provider implementations and review their structure.
+    3. Create a new Asgardeo provider implementation using the existing provider pattern.
+    4. Configure OIDC discovery using the supplied issuer URL.
+    5. Enable PKCE support by default.
+    6. Add token handling and refresh token support.
+    7. Implement user profile retrieval through the UserInfo endpoint.
+    8. Implement logout support.
+    9. Add documentation and configuration examples.
+    10. Add or update automated tests for the new provider.
 
-**Plan:** [Step-by-step implementation plan]
-1. [Modify file X to do Y]
-2. [Add function Z]
-3. [Update tests]
+    Expected files to modify (subject to repository structure):
+    - Provider implementation files
+    - Provider registration/configuration files
+    - Documentation files
+    - Authentication test files
 
-**Implement:** [Link to your branch/commits as you work]
+Implement
+    Implementation branch: feature/asgardeo-provider
+    Commits and branch links will be added during development.
 
-**Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
+Review
+    Before submitting the pull request I plan to:
+        - Review CONTRIBUTING.md
+        - Verify code style requirements
+        - Follow project commit message conventions
+        - Follow project pull request conventions
+        - Ensure documentation is updated
+        - Ensure tests pass successfully
+        - Confirm no existing provider functionality is affected
 
-**Evaluate:** [How will you verify it works?]
+Evaluate
+
+    Verification will include:
+        - Functional Verification
+        - Configure a sample application using the new Asgardeo provider.
+        - Authenticate successfully using an Asgardeo tenant.
+        - Verify token retrieval and storage.
+        - Verify user profile retrieval.
+        - Verify logout functionality.
+        - Automated Testing
+        - Add tests covering provider configuration.
+        - Add tests covering OIDC discovery behavior.
+        - Add tests covering PKCE defaults.
+        - Add tests covering user profile mapping.
+        - Run the project's existing test suite to ensure no regressions.
+
+    Success Criteria:
+    Developers can integrate Asgardeo using a dedicated provider configuration without manually configuring OIDC endpoints and related authentication settings.
+
 
 ---
 
