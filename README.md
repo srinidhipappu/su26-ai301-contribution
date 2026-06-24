@@ -177,9 +177,93 @@ Evaluate
 
 ## Implementation Notes
 
-### Week [X] Progress
+### Week [3] Progress
 
-[What you built this week, challenges faced, decisions made]
+This week, I researched how to build an Asgardo provider, such as Auth0. Companies can use Asgaro handle:
+    - Login
+    - Signup
+    - Password reset
+    - Google/Microsoft SSO
+    - User accounts
+    - OAuth/OIDC
+
+I realized that I neeeded to research how an Auth0 system works, since I am developing the feature from scatch. 
+
+The pipeline I need to develop for this feature is:
+
+User
+ ↓
+Clicks Login
+ ↓
+Redirected to Asgardeo
+ ↓
+Logs in
+ ↓
+Gets Authorization Code
+ ↓
+App exchanges code for tokens
+ ↓
+Access Token received
+
+This was my research plan:
+
+OpenID Connect (OIDC): 
+
+OAuth answers: "Can this user access something?"
+OIDC answers: "Who is this user?"
+
+Learn:
+openid scope
+id_token
+userinfo endpoint
+issuer
+
+Questions:
+How does the app get a user's email?
+What is an ID token?
+What is the userinfo endpoint?
+
+PKCE: 
+Code Verifier
+↓
+Code Challenge
+↓
+Secure Token Exchange
+
+Question:
+Why does PKCE exist?
+
+Just understand:
+PKCE prevents someone from stealing the authorization code.
+
+4. Nuxt Auth Architecture
+
+Research:
+Nuxt Auth Provider
+Nuxt Auth OAuth Provider
+Nuxt Auth Auth0 Provider
+
+Questions:
+How are providers registered?
+How are strategies configured?
+How do existing providers work?
+5. Asgardeo Documentation
+
+Read only:
+Login flow
+OIDC support
+UserInfo endpoint
+
+Some articles I researched:
+https://openid.net/developers/how-connect-works/
+https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce
+https://wso2.com/identity-platform/docs/guides/authentication/oidc/
+https://auth.nuxtjs.org/
+https://auth.nuxtjs.org/providers/auth0/
+
+I ultimately learned:
+
+When a user clicks "Login with Asgardeo," they should be redirected to Asgardeo's login page, where they authenticate and receive an authorization code. The application then exchanges this code for access, ID, and refresh tokens. The access token is then used to access protected resources, and the ID token contains information about the authenticated user, and the refresh token can obtain new access tokens when they expire. OpenID Connect extends OAuth by adding identity information through the UserInfo endpoint and ID tokens. PKCE (Proof Key for Code Exchange) adds an extra security layer by generating a code verifier and code challenge to prevent authorization code interception attacks. The purpose of the Asgardeo provider is to automate this entire flow within Nuxt Auth so developers only need to provide the basic configurations, such as clientId and issuer, rather than manually configuring OIDC endpoints, token handling, PKCE settings, user profile retrieval, and logout functionality. Ultimately, the provider acts as an integration layer between Nuxt Auth and Asgardeo, handling authentication, token management, user information retrieval, and session lifecycle management behind the scenes.
 
 ### Week [Y] Progress
 
