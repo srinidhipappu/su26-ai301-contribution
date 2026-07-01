@@ -160,18 +160,22 @@ Evaluate
 
 ### Unit Tests
 
-- [ ] Test case 1: [Description]
-- [ ] Test case 2: [Description]
-- [ ] Test case 3: [Description]
+- [x] Verified extracted configuration resolves the expected Asgardeo runtime configuration values (baseUrl, clientId, afterSignInUrl).
+- [x] Verified `client.initialize(resolvedConfig)` receives the extracted configuration without changing initialization behavior.
+- [x] Verified the generated authorization URL contains the expected `redirect_uri` (`http://localhost:3000/api/auth/callback`).
 
 ### Integration Tests
 
-- [ ] Integration scenario 1
-- [ ] Integration scenario 2
+- [x] Completed the OAuth sign-in flow using the Nuxt sample application.
+- [x] Verified the callback exchanges the authorization code, establishes a session, and renders the authenticated user.
 
 ### Manual Testing
 
-[What you tested manually and results]
+- Ran `nx typecheck @asgardeo/nuxt` successfully.
+- Ran `nx build @asgardeo/nuxt` successfully.
+- Configured a local Asgardeo application with the correct redirect URI.
+- Logged into the Nuxt sample application through Asgardeo.
+- Confirmed successful authentication by seeing the authenticated landing page (`Welcome back, <user>`), verifying that the configuration extraction did not change the existing authentication flow.
 
 ---
 
@@ -265,17 +269,39 @@ I ultimately learned:
 
 When a user clicks "Login with Asgardeo," they should be redirected to Asgardeo's login page, where they authenticate and receive an authorization code. The application then exchanges this code for access, ID, and refresh tokens. The access token is then used to access protected resources, and the ID token contains information about the authenticated user, and the refresh token can obtain new access tokens when they expire. OpenID Connect extends OAuth by adding identity information through the UserInfo endpoint and ID tokens. PKCE (Proof Key for Code Exchange) adds an extra security layer by generating a code verifier and code challenge to prevent authorization code interception attacks. The purpose of the Asgardeo provider is to automate this entire flow within Nuxt Auth so developers only need to provide the basic configurations, such as clientId and issuer, rather than manually configuring OIDC endpoints, token handling, PKCE settings, user profile retrieval, and logout functionality. Ultimately, the provider acts as an integration layer between Nuxt Auth and Asgardeo, handling authentication, token management, user information retrieval, and session lifecycle management behind the scenes.
 
-### Week [Y] Progress
+### Week [4] Progress
 
-[Continue documenting as you work]
+This week I continued implementing and validating the Nuxt authentication flow using the local sample application. 
 
-### Code Changes
+During development, I extracted the Asgardeo server configuration into a dedicated configuration module while preserving the existing authentication flow. 
 
-- **Files modified:** [List]
-- **Key commits:** [Links to important commits]
-- **Approach decisions:** [Why you chose certain approaches]
+I confirmed that the resolved configuration was still passed into `client.initialize()` and that the downstream authentication logic remained unchanged.
 
----
+While testing, I encountered several authentication issues that required debugging:
+
+- The Asgardeo client was not initializing because required runtime configuration values (`baseUrl` and `clientId`) were missing.
+
+- I configured the required environment variables using a local `.env` file and verified that the SDK correctly resolved the expected values.
+
+- I then encountered an OAuth callback mismatch (`callback.not.match`) while authenticating with an Asgardeo sercer. To debug this, I temporarily added logging to inspect the generated authorization URL and verify the exact `redirect_uri` being sent to Asgardeo.
+
+- The generated authorization URL correctly used: http://localhost:3000/api/auth/callback
+
+- After comparing this value with the application configuration in the Asgardeo Console, I discovered that the authorized redirect URI had not actually been persisted in the application settings. Once the redirect URI was correctly saved, the OAuth flow completed successfully.
+
+After correcting the application configuration, I successfully verified the complete authentication flow:
+
+- User redirected to the Asgardeo login page.
+- Successful authentication using a test user.
+- Authorization code returned to `/api/auth/callback`.
+- Authorization code exchanged for tokens.
+- Session established successfully.
+- Authenticated user information rendered correctly in the sample Nuxt application.
+
+The successful end-to-end login confirmed that the configuration extraction did not change the inputs passed into `client.initialize()` and that the authentication pipeline, callback handling, session creation, and SSR hydration continued to function correctly after the refactor.
+
+This debugging process also improved my understanding of OAuth 2.0, OpenID Connect, PKCE, runtime configuration, callback validation, and the importance of correctly configuring redirect URIs within an identity provider.
+
 
 ## Pull Request
 
