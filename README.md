@@ -305,36 +305,44 @@ This debugging process also improved my understanding of OAuth 2.0, OpenID Conne
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when submitted]
+PR Link: https://github.com/asgardeo/javascript/pull/534
 
-**PR Description:** [Draft or final PR description - much of the content above can be adapted]
+PR Description:
+This PR improves the `@asgardeo/nuxt` module's SSR configuration handling by extracting runtime configuration resolution into a dedicated helper. It replaces silent configuration failures with clear validation errors, making authentication setup issues easier to diagnose while preserving the existing authentication flow.
 
-**Maintainer Feedback:**
-- [Date]: [Summary of feedback received]
-- [Date]: [How you addressed it]
+Maintainer Feedback:
 
-**Status:** [Awaiting review / Iterating / Approved / Merged]
+Awaiting review.
 
----
+Status: Awaiting review
 
 ## Learnings & Reflections
 
 ### Technical Skills Gained
 
-[What you learned technically]
+- Learned more about Nuxt 3 and Nitro server-side architecture, including server plugins, runtime configuration, and request lifecycle handling.
+- Improved my understanding of OAuth 2.0 and OpenID Connect authentication flows, including authorization codes, redirect URIs, token exchange, and PKCE.
+- Learned how authentication SDKs handle configuration, initialization, and error handling in a framework integration.
+- Gained experience contributing to a large open-source monorepo using Nx, including running targeted builds and type checks.
+- Learned how Changesets are used to manage package releases and communicate user-facing changes.
 
 ### Challenges Overcome
 
-[What was hard and how you solved it]
+One of the biggest challenges was debugging issues during the authentication setup and testing process. When running the Nuxt application locally, I initially encountered errors when trying to reach the sign-in page. After investigating the authentication flow and checking the generated URLs, I discovered that the issue was caused by an incorrect URL path configuration in the Asgardeo application settings.
+By tracing the redirect flow between the Nuxt application and Asgardeo, I was able to identify that the callback URL configured in the Asgardeo console did not match the application's expected route. Correcting the URL configuration allowed the OAuth authentication flow to complete successfully. This experience helped me better understand the importance of correctly configuring redirect URIs in OAuth/OpenID Connect integrations and how small configuration differences can prevent authentication flows from working properly.
 
 ### What I'd Do Differently Next Time
 
-[Reflection on your process]
+- Start by understanding the repository's contribution guidelines and commit conventions earlier in the process.
+- Add tests alongside implementation instead of considering them near the end of development.
+- Keep commits and PR descriptions aligned with the actual scope of the changes from the beginning.
+- Spend more time exploring existing patterns in the codebase before making implementation decisions.
 
----
+### Resources Used
 
-## Resources Used
-
-- [Link to helpful documentation]
-- [Tutorial or Stack Overflow post that helped]
-- [GitHub issues or discussions that helped]
+- Asgardeo JavaScript SDK repository and CONTRIBUTING.md
+- Nuxt documentation: https://nuxt.com/docs
+- Nuxt Auth documentation: https://auth.nuxtjs.org/
+- OpenID Connect overview: https://openid.net/developers/how-connect-works/
+- OAuth 2.0 Authorization Code Flow with PKCE:
+  https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce
