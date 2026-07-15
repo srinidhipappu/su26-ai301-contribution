@@ -346,3 +346,25 @@ By tracing the redirect flow between the Nuxt application and Asgardeo, I was ab
 - OpenID Connect overview: https://openid.net/developers/how-connect-works/
 - OAuth 2.0 Authorization Code Flow with PKCE:
   https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce
+
+
+
+
+
+Contribution [2]: CLI Login Signup System #21
+
+Contribution Number: 2
+Student: Srinidhi Pappu
+Issue: https://github.com/ProjectX-VJTI/Xplore-workshop/issues/21
+
+The issue focuses on implementing a command-line interface (CLI) based login and signup system in Python. Currently, the project needs a terminal-based authentication flow where users can create accounts, log in, and navigate between different application windows. The system should simulate authentication using text file handling while maintaining a simple and user-friendly terminal experience.
+
+In order to solve this issue, I would need to build a Python-based CLI authentication system that allows users to choose between login and signup options, stores and retrieves user credentials, manages login states, and provides appropriate welcome messages depending on whether a user is authenticated. The implementation would involve using Python control flow, file handling, secure password storage through hashing, and terminal management techniques. Additional improvements would include using match-case statements for cleaner navigation logic, maintaining the program loop until the user exits, and clearing the terminal screen when transitioning between login, signup, and main windows.
+
+Status: Phase I Complete
+
+Why I Chose This Issue
+
+I chose this issue because it aligns closely with my interests in software engineering, Python development, and building practical user-facing applications. Authentication systems are a fundamental part of modern software applications, and working on this contribution provides an opportunity to understand important concepts such as user management, credential storage, security practices, and application flow design.
+
+This issue particularly interested me because it provides hands-on experience with implementing a complete feature from the ground up while contributing to an open-source project. Through this contribution, I hope to strengthen my Python programming skills, learn more about secure authentication practices such as password hashing, and improve my understanding of how developers design reliable and maintainable systems. Working on this issue over the next few weeks will allow me to make a meaningful contribution by improving the usability and functionality of the project while gaining experience collaborating in an open-source environment.
