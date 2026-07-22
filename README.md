@@ -368,3 +368,16 @@ Why I Chose This Issue
 I chose this issue because it aligns closely with my interests in software engineering, Python development, and building practical user-facing applications. Authentication systems are a fundamental part of modern software applications, and working on this contribution provides an opportunity to understand important concepts such as user management, credential storage, security practices, and application flow design.
 
 This issue particularly interested me because it provides hands-on experience with implementing a complete feature from the ground up while contributing to an open-source project. Through this contribution, I hope to strengthen my Python programming skills, learn more about secure authentication practices such as password hashing, and improve my understanding of how developers design reliable and maintainable systems. Working on this issue over the next few weeks will allow me to make a meaningful contribution by improving the usability and functionality of the project while gaining experience collaborating in an open-source environment.
+
+
+Problem Description
+
+The project currently lacks a complete command-line authentication system that allows users to create accounts and log into the application. Users should be able to navigate between login and signup options through the terminal, but this functionality has not yet been fully implemented. The issue also requests improvements to the application's navigation by using Python's match-case statements and maintaining a login state that determines what the user sees after authentication.
+
+Expected Behavior
+
+The application should provide a simple and intuitive CLI where users can choose to log in or sign up. During signup, user credentials should be stored using text file handling, and during login, those credentials should be verified before granting access. Once authenticated, the program should welcome the user, maintain their login state, and allow them to continue using the application until they choose to exit. Navigation between menus should be clean and easy to follow, with the terminal screen clearing appropriately as users move between different windows.
+
+Current Behavior
+
+Currently, the project does not have a fully functional login and signup workflow. Users cannot reliably create accounts, authenticate themselves, or maintain a persistent login state throughout the program. Navigation between different menus is also incomplete, and the requested improvements, such as using match-case statements and displaying personalized welcome messages after successful authentication, have not yet been implemented. As a result, the user experience is limited, and the application lacks a structured authentication flow that simulates a real login system.
