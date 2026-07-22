@@ -370,7 +370,7 @@ I chose this issue because it aligns closely with my interests in software engin
 This issue particularly interested me because it provides hands-on experience with implementing a complete feature from the ground up while contributing to an open-source project. Through this contribution, I hope to strengthen my Python programming skills, learn more about secure authentication practices such as password hashing, and improve my understanding of how developers design reliable and maintainable systems. Working on this issue over the next few weeks will allow me to make a meaningful contribution by improving the usability and functionality of the project while gaining experience collaborating in an open-source environment.
 
 
-Problem Description
+Problem Description (Currently on Phase 2)
 
 The project currently lacks a complete command-line authentication system that allows users to create accounts and log into the application. Users should be able to navigate between login and signup options through the terminal, but this functionality has not yet been fully implemented. The issue also requests improvements to the application's navigation by using Python's match-case statements and maintaining a login state that determines what the user sees after authentication.
 
